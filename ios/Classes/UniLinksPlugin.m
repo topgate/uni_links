@@ -59,7 +59,10 @@ static id _instance;
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-  self.latestLink = [url absoluteString];
+    
+    self.latestLink = [url absoluteString];
+    self.initialLink = [url absoluteString];
+    NSLog(@"openURLを読んだ initialLink:  %@",self.initialLink);
     NSLog(@"openURLを読んだ self.latestLink: %@", self.latestLink);
   return YES;
 }
@@ -87,6 +90,8 @@ API_AVAILABLE(ios(13.0)){
 
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
     NSLog(@"handleMethodCall call.method:%@",call.method);
+    NSLog(@"handleMethodCall self.initialLink: %@", self.initialLink);
+    NSLog(@"handleMethodCall self.latestLink: %@", self.latestLink);
   if ([@"getInitialLink" isEqualToString:call.method]) {
     result(self.initialLink);
     // } else if ([@"getLatestLink" isEqualToString:call.method]) {
