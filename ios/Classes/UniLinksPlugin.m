@@ -59,7 +59,10 @@ static id _instance;
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-  self.latestLink = [url absoluteString];
+    
+    self.latestLink = [url absoluteString];
+    self.initialLink = [url absoluteString];
+    NSLog(@"openURLを読んだ initialLink:  %@",self.initialLink);
     NSLog(@"openURLを読んだ self.latestLink: %@", self.latestLink);
   return YES;
 }
