@@ -90,6 +90,8 @@ API_AVAILABLE(ios(13.0)){
 
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
     NSLog(@"handleMethodCall call.method:%@",call.method);
+    NSLog(@"handleMethodCall self.initialLink: %@", self.initialLink);
+    NSLog(@"handleMethodCall self.latestLink: %@", self.latestLink);
   if ([@"getInitialLink" isEqualToString:call.method]) {
     result(self.initialLink);
     // } else if ([@"getLatestLink" isEqualToString:call.method]) {
